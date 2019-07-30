@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ModelBindingAssignment.Models;
 
 namespace ModelBindingAssignment.Controllers
 {
@@ -15,10 +16,18 @@ namespace ModelBindingAssignment.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Catalog(IFormCollection data)
+        [HttpGet]
+        public IActionResult Catalog(Toy t)
         {
-            Toy t = new Toy()
+            if (ModelState.IsValid)
+            {
+                ToyDb.Catalog(t);
+
+                ViewData["Success"] = "Toy ready for play";
+                return View();
+            }
+
+            return View();
         }
     }
 }
