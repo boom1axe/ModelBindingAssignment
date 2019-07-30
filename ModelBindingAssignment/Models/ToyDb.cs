@@ -8,6 +8,7 @@ namespace ModelBindingAssignment.Models
 {
     public static class ToyDb
     {
+
         public static void Catalog(Toy t)
         {
             SqlConnection con = new SqlConnection("Data Source=localhost;Initial Catalog=ToyDB;Integrated Security=True");
